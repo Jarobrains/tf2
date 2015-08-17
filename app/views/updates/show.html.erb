@@ -1,1 +1,7 @@
 <h1> Updates to Team Fortress 2 </h1>
+
+<table class="table table-striped">
+  <% @updates.each do |update| %>
+    <%= render 'update', update: update %>
+  <% end %>
+</table>
