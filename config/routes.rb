@@ -3,7 +3,46 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  get '/main', :controller => 'updates' , :action => 'show', :as => 'update'
+  get '/main', :controller => 'updates' , :action => 'index'
+
+
+# devise_for :users
+  # Routes for the Comment resource:
+  # CREATE
+  get '/comments/new',      :controller => 'comments', :action => 'new',    :as => 'new_comment'
+  post '/comments',         :controller => 'comments', :action => 'create', :as => 'comments'
+
+  # READ
+  get '/comments',          :controller => 'comments', :action => 'index'
+  get '/comments/:id',      :controller => 'comments', :action => 'show',   :as => 'comment'
+
+  # UPDATE
+  get '/comments/:id/edit', :controller => 'comments', :action => 'edit',   :as => 'edit_comment'
+  patch '/comments/:id',    :controller => 'comments', :action => 'update'
+
+  # DELETE
+  delete '/comments/:id',   :controller => 'comments', :action => 'destroy'
+
+
+# CREATE
+  get("/updates/new", {:controller => "updates", :action => "new"})
+  get("/create_update", {:controller => "updates", :action => "create"})
+
+  # READ
+  #get("//:id", {:controller => "posts", :action => "show"})
+  #get("/posts/", {:controller => "posts", :action => "index"})
+
+  # UPDATE
+  #get("/posts/:id/edit", {:controller => "posts", :action => "edit"})
+  #get("/update_post/:id", {:controller => "posts", :action => "update"})
+
+  # DESTROY
+  #get("/destroy_post/:id", {:controller => "posts", :action => "destroy"})
+
+
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
