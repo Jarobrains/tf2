@@ -1,33 +1,33 @@
-class CommentsController < ApplicationController
+class ThoughtsController < ApplicationController
   before_action :check_if_owner, only: [:edit, :update, :destroy]
 
   def check_if_owner
-    @comment = Comment.find(params['id'])
-    if current_user.id != @comment.user_id
+    @thought = Thought.find(params['id'])
+    if current_user.id != @thought.user_id
       redirect_to root_url, notice: "You can't do that"
     end
   end
 
   def index
-    @comments = Comment.all
+    @thoughts = Thought.all
   end
 
   def show
-    @comment = Comment.find(params[:id])
+    @thought = Thought.find(params[:id])
   end
 
   def new
-    @comment = Comment.new
+    @thought = Thought.new
   end
 
   def create
-    @comment = Comment.new
-    @comment.user_id = current_user.id
-    @comment.photo_id = params[:photo_id]
-    @comment.contents = params[:contents]
+    @thought = Thought.new
+    @thought.user_id = current_user.id
+    @thought.update_id = params[:photo_id]
+    @thought.contents = params[:contents]
 
     respond_to do |format|
-      if @comment.save
+      if @thought.save
         format.html {redirect_to :back, :notice => "Comment created successfully."}
         format.js { render 'create' }
       else

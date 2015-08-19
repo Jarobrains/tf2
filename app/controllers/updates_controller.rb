@@ -3,9 +3,6 @@ class UpdatesController < ApplicationController
  def new
  end
 
- def show
- end
-
  def index
   @updates = Update.all
   @update = Update.new
@@ -17,8 +14,8 @@ class UpdatesController < ApplicationController
  end
 
 def show
-  @updates = Update.find(params[:id])
-  @comment = Comment.new
+  @update = Update.find(params[:id])
+  @thought = Thought.new
   respond_to do |format|
     format.html
     format.json { render json: @update}

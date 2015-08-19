@@ -7,29 +7,29 @@ Rails.application.routes.draw do
 
 
 # devise_for :users
-  # Routes for the Comment resource:
+  # Routes for the Thought resource:
   # CREATE
-  get '/comments/new',      :controller => 'comments', :action => 'new',    :as => 'new_comment'
-  post '/comments',         :controller => 'comments', :action => 'create', :as => 'comments'
+  get '/thoughts/new',      :controller => 'thoughts', :action => 'new',    :as => 'new_thought'
+  post '/thoughts',         :controller => 'thoughts', :action => 'create', :as => 'thoughts'
 
   # READ
-  get '/comments',          :controller => 'comments', :action => 'index'
-  get '/comments/:id',      :controller => 'comments', :action => 'show',   :as => 'comment'
+  get '/thoughts',          :controller => 'thoughts', :action => 'index'
+  get '/thoughts/:id',      :controller => 'thoughts', :action => 'show',   :as => 'thought'
 
   # UPDATE
-  get '/comments/:id/edit', :controller => 'comments', :action => 'edit',   :as => 'edit_comment'
-  patch '/comments/:id',    :controller => 'comments', :action => 'update'
+  get '/thoughts/:id/edit', :controller => 'thoughts', :action => 'edit',   :as => 'edit_thought'
+  patch '/thoughts/:id',    :controller => 'thoughts', :action => 'update'
 
   # DELETE
-  delete '/comments/:id',   :controller => 'comments', :action => 'destroy'
+  delete '/thoughts/:id',   :controller => 'thoughts', :action => 'destroy'
 
 
 # CREATE
   get("/updates/new", {:controller => "updates", :action => "new"})
   get("/create_update", {:controller => "updates", :action => "create"})
 
-  # READ
-  #get("//:id", {:controller => "posts", :action => "show"})
+  #READ
+  get("/updates/:id", {:controller => "updates", :action => "show"})
   #get("/posts/", {:controller => "posts", :action => "index"})
 
   # UPDATE
@@ -73,13 +73,13 @@ Rails.application.routes.draw do
 
   # Example resource route with sub-resources:
   #   resources :products do
-  #     resources :comments, :sales
+  #     resources :thoughts, :sales
   #     resource :seller
   #   end
 
   # Example resource route with more complex sub-resources:
   #   resources :products do
-  #     resources :comments
+  #     resources :thoughts
   #     resources :sales do
   #       get 'recent', on: :collection
   #     end
