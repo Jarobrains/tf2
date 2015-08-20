@@ -1,20 +1,10 @@
-<style>
-    .hero {
-    height: 100%;
-    background-image: url(<%= @update.image %>);
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-    body, html {height:100%;}
-</style>
+
 
 
 <div class="hero">
-  <div class="container">
-    <h1><%= @update.title %></h1>
-  </div>
 </div>
-    <p><%= @update.text %></p>
+<img src="<%= @update.image %>" style='width:100%;' border="0" alt="Null">
+    <big><p><%= @update.text %></p></big>
   </div>
 
   <div class="col-md-8 col-md-offset-2">
@@ -40,13 +30,9 @@
               <!-- Label and input for user_id -->
               <div class="form-group">
                 <label for="user_id" class="col-sm-2 control-label">
-                  User
+
                 </label>
-                <div class="col-sm-10">
-                  <%= select_tag :user_id, options_from_collection_for_select(User.all, :id, :email, @thought.user_id) %>
-                  <!-- <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%#= @thought.user_id %>"> -->
-                </div>
-              </div>
+
 
               <!-- Label and input for post_id -->
               <input type="hidden" name="update_id" value="<%= @update.id %>">
@@ -75,7 +61,7 @@
   </div>
   <div class="col-md-8 col-md-offset-2">
     <% @update.thoughts.each do |thought| %>
-      <h4><%= thought.user.full_name %></h4>
+      <h4><%= thought.user.email %></h4>
       <p><%= thought.contents %></p>
       <hr>
     <% end %>

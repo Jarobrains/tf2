@@ -22,4 +22,14 @@ def show
   end
 end
 
+def main
+  @updates = Update.all
+  @update = Update.new
+
+  respond_to do |format|
+    format.html { render 'index' }
+    format.json { render json: @updates}
+  end
+end
+
 end

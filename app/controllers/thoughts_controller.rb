@@ -23,7 +23,7 @@ class ThoughtsController < ApplicationController
   def create
     @thought = Thought.new
     @thought.user_id = current_user.id
-    @thought.update_id = params[:photo_id]
+    @thought.update_id = params[:update_id]
     @thought.contents = params[:contents]
 
     respond_to do |format|
@@ -50,7 +50,7 @@ class ThoughtsController < ApplicationController
 
     @thought.user_id = current_user.id
     @thought.photo_id = params[:photo_id]
-    @thought.contents = params[:contents]
+    @thought.contents ou= params[:contents]
 
     respond_to do |format|
       if @thought.save

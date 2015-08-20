@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users, ActiveAdmin::Devise.config
+
+
+  devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-
+  # devise_for :users, ActiveAdmin::Devise.config
   get '/main', :controller => 'updates' , :action => 'index'
 
 
@@ -39,6 +41,21 @@ Rails.application.routes.draw do
   # DESTROY
   #get("/destroy_post/:id", {:controller => "posts", :action => "destroy"})
 
+  # Routes for the User resource:
+  # CREATE
+  get '/users/new',      :controller => 'users', :action => 'new',    :as => 'new_user'
+  post '/users',         :controller => 'users', :action => 'create', :as => 'users'
+
+  # READ
+  #get '/users',          :controller => 'users', :action => 'index'
+  #get '/users/:id',      :controller => 'users', :action => 'show',   :as => 'user'
+
+  # UPDATE
+  get '/users/:id/edit', :controller => 'users', :action => 'edit',   :as => 'edit_user'
+  patch '/users/:id',    :controller => 'users', :action => 'update'
+
+  # DELETE
+  #delete '/users/:id',   :controller => 'users', :action => 'destroy'
 
 
 
@@ -48,7 +65,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'updates#main'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
