@@ -37,7 +37,7 @@ class ThoughtsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find(params[:id])
+    @thought = Thought.find(params[:id])
 
     respond_to do |format|
       format.html
@@ -46,15 +46,15 @@ class ThoughtsController < ApplicationController
   end
 
   def update
-    @comment = Comment.find(params[:id])
+    @thought = Thought.find(params[:id])
 
-    @comment.user_id = current_user.id
-    @comment.photo_id = params[:photo_id]
-    @comment.contents = params[:contents]
+    @thought.user_id = current_user.id
+    @thought.photo_id = params[:photo_id]
+    @thought.contents = params[:contents]
 
     respond_to do |format|
-      if @comment.save
-        format.html {redirect_to comment_url(@comment.id), :notice => "Comment updated successfully."}
+      if @thought.save
+        format.html {redirect_to thought_url(@thought.id), :notice => "Comment updated successfully."}
         format.js
       else
         format.html {render 'edit'}
@@ -64,9 +64,9 @@ class ThoughtsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
+    @thought = Thought.find(params[:id])
 
-    @comment.destroy
+    @thought.destroy
 
     respond_to do |format|
       format.html { redirect_to comments_url, :notice => "Comment deleted." }
